@@ -92,6 +92,25 @@ function showPokemon(pokemon){
                 <img src=${pokemon.imageURL} alt="pokeIMG"></img>
             </div>
         </div>
+        <div class="region">
+            <div>
+                <p>Pok&eacutedex - ${pokemon.details.region}</p>
+            </div>
+        </div>
+        <div class="physicalDesc">
+            <div>
+                <p>Height: ${pokemon.details.height/10}m</p>
+            </div>
+            <div>
+                <p>Weight: ${pokemon.details.weight/10}kg</p>
+            </div>
+        </div>
+        <div class="bioDesc">
+            <div>
+                <h2>Bio</h2>
+                <p>${pokemon.details.bio}</p>
+            </div>
+        </div>
 
     `;
 
