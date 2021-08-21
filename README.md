@@ -13,3 +13,4 @@ https://github.com/sindresorhus/pokemon - providing japanese pokemon names
 Browser-side with auto caching: pokeapi-js-wrapper by Alessandro Pezzé
 https://dribbble.com/shots/2859891--025-Pikachu/attachments/589409?mode=media - for design and inspiration
 Pokedex logo - https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9dex
+Pokemon type icons - https://www.deviantart.com/lugia-sea/art/Pokemon-Type-Icons-Vector-869706864

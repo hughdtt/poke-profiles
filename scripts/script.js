@@ -36,7 +36,8 @@ async function getPokemon(pokemonName){
         pokemonObj.details.height = response.height;
         pokemonObj.details.weight = response.weight;
         for (let element in response.types){
-            pokemonObj.details.types.push(response.types[element].type.name) 
+            let string = response.types[element].type.name
+            pokemonObj.details.types.push(string.charAt(0).toUpperCase() + string.slice(1)) 
         }
         for (let type in response.stats){
             let statObj = {};
@@ -58,31 +59,31 @@ async function getPokemon(pokemonName){
         if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
         if (response.id > 809){pokemonObj.details.region = 'Galar Region', pokemonObj.altName = ''}
 
-        console.log(response)
+        console.log(pokemonObj.details.types)
     })
     showPokemon(pokemonObj);
 }
 
 //Background Colours
 const colours = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
+    Normal: '#A8A77A',
+    Fire: '#EE8130',
+    Water: '#6390F0',
+    Electric: '#fac802e8',
+    Grass: '#7AC74C',
+    Ice: '#96D9D6',
+    Fighting: '#C22E28',
+    Poison: '#A33EA1',
+    Ground: '#E2BF65',
+    Flying: '#A98FF3',
+    Psychic: '#F95587',
+    Bug: '#A6B91A',
+    Rock: '#B6A136',
+    Ghost: '#735797',
+    Dragon: '#6F35FC',
+    Dark: '#705746',
+    Steel: '#B7B7CE',
+    Fairy: '#D685AD',
 };
 
 //Pass data through to page
@@ -126,11 +127,19 @@ function showPokemon(pokemon){
                 <span>Pok&eacutedex - ${pokemon.details.region}</span>
             </div>
         </div>
+        <div class="type">
+            <div>
+                <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[0]+".png"} alt="type" />
+                <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>
+            </div>
+        </div>
     `;
 
     main.innerHTML = cardHTML;
 
 }
+
+getPokemon('pikachu')
 
 //Search utility
 form.addEventListener("submit", (e) => {
