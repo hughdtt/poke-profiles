@@ -63,17 +63,18 @@ input:focus {
     grid-column: col 1 / span 4;
     grid-row: row 2;
     padding-left: 2rem;
+
     display:grid;
 }
 
 .titleCard .japName{
     font-size: 13rem;
     letter-spacing: -10px;
-    line-height: 0;
+    line-height: 2;
     font-weight: 500;
     grid-column: col 1/ span 4;
     grid-row: row 1;
-    place-self: center start;
+    
 }
 
 .titleCard .titleImg{
