@@ -99,7 +99,10 @@ input:focus {
     letter-spacing: 0.03em;
     padding-right: 2rem;
     padding-bottom: 3rem;
+}
 
+.physicalDesc div{
+    padding-bottom: 0.5rem;
 }
 
 /* Region */
