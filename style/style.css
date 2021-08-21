@@ -1,4 +1,87 @@
+/* Layout */
 body {
     font-family: 'Raleway', sans-serif;
     color: white;
+    display:flex;
+    flex-flow: column wrap;
+    overflow-x:hidden;
 }
+
+form {
+    align-self: center;
+}
+
+main {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(5, [col] 20vw ) ;
+    grid-template-rows: repeat(3, [row] auto  );
+}
+
+
+
+/* Search Component */
+input {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.1),
+        0 15px 40px rgba(0, 0, 0, 0.1);
+    color: black;
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+input::placeholder {
+    color: black;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* ID component */
+.id{
+    font-size: 3vh;
+    grid-column: col 1/ span 1;
+    grid-row: row 1;
+    justify-self: center;
+}
+
+/* Title Img Component */
+.titleCard {
+    grid-column: col 1 / span 5;
+    grid-row: row 2;
+    justify-self: center;
+
+    display:grid;
+}
+
+.titleCard .japName{
+    font-size: 17vh;
+    grid-column: col 1/ span 3;
+    grid-row: row 1;
+}
+
+.titleCard .titleImg{
+    grid-column: col 3/ span 3;
+    grid-row: row 1;
+}
+
+/* Region */
+
+.region {
+    grid-column: col 1 / span 1;
+    grid-row: row 3;
+}
+
+
+
+
+
+
+
+
+

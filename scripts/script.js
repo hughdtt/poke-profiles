@@ -47,7 +47,7 @@ async function getPokemon(pokemonName){
             pokemonObj.details.moves.push(response.abilities[id].ability.name)
         }
         if (response.id <= 151){pokemonObj.details.region = 'Kanto Region'}
-        console.table(pokemonObj.details.stats)
+        // console.table(pokemonObj.details.stats)
     })
     showPokemon(pokemonObj);
 }
@@ -87,19 +87,43 @@ function showPokemon(pokemon){
     const cardHTML = `
         <div class="id">
             <div>
-                <p>${formatId(pokemon.id)}</p>
-                <p>${pokemon.name}</p>
+                <span>${formatId(pokemon.id)}</span></br>
+                <span>${pokemon.name}</span>
             </div>
         </div>
         <div class="titleCard">
-            <div>
+            <div class="japName">
                 <p>${pokemon.altName}</p>
             </div>
-            <div>
-                <img src=${pokemon.imageURL} alt="pokeIMG"></img>
+            <div class="titleImg">
+                <img src=${pokemon.imageURL} alt="pokeIMG" />
             </div>
         </div>
-        <div class="region">
+        
+
+    `;
+
+    main.innerHTML = cardHTML;
+
+}
+
+getPokemon('bulbasaur')
+
+//Search utility
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const pokemon = search.value;
+
+    if (pokemon) {
+        getPokemon(pokemon.toLowerCase()); //api returns names in lower case; this handles cases where user decides to search using capital letters
+
+        search.value = "";
+    }
+});
+
+/**
+ * <div class="region">
             <div>
                 <p>Pok&eacutedex - ${pokemon.details.region}</p>
             </div>
@@ -123,26 +147,5 @@ function showPokemon(pokemon){
                 <p>Speed: ${pokemon.details.stats[5]['speed']}</p>
             </div>
         </div>
-
-    `;
-
-    main.innerHTML = cardHTML;
-
-}
-
-getPokemon('bulbasaur')
-
-//Search utility
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const pokemon = search.value;
-
-    if (pokemon) {
-        getPokemon(pokemon.toLowerCase()); //api returns names in lower case; this handles cases where user decides to search using capital letters
-
-        search.value = "";
-    }
-});
-
+ */
 
