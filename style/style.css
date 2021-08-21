@@ -89,13 +89,27 @@ input:focus {
     
 }
 
-/* Region */
-
-.region {
+/* Physical Description Component */
+.physicalDesc{
     grid-column: col 1 / span 1;
-    grid-row: row 3;
+    grid-row: row 2;
+    place-self: end end;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    padding-right: 1.5rem;
+    padding-bottom: 3rem;
+
 }
 
+/* Region */
+.region {
+    grid-column: col 3 / span 1;
+    grid-row: row 2;
+    place-self: end end;
+    font-size: 1.4rem;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
 
 
 

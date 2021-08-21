@@ -46,7 +46,17 @@ async function getPokemon(pokemonName){
         for (let id in response.abilities){
             pokemonObj.details.moves.push(response.abilities[id].ability.name)
         }
+
+        //Hardcoding this because api is missing
         if (response.id <= 151){pokemonObj.details.region = 'Kanto Region'}
+        if (response.id > 151 && response.id <= 251){pokemonObj.details.region = 'Johto Region'}
+        if (response.id > 251 && response.id <= 386){pokemonObj.details.region = 'Hoenn Region'}
+        if (response.id > 386 && response.id <= 493){pokemonObj.details.region = 'Sinnoh Region'}
+        if (response.id > 493 && response.id <= 493){pokemonObj.details.region = 'Sinnoh Region'}
+        if (response.id > 493 && response.id <= 649){pokemonObj.details.region = 'Unova Region'}
+        if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
+        if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
+        if (response.id > 809){pokemonObj.details.region = 'Galar Region', pokemonObj.altName = ''}
         // console.table(pokemonObj.details.stats)
     })
     showPokemon(pokemonObj);
@@ -102,8 +112,19 @@ function showPokemon(pokemon){
                 <img src=${pokemon.imageURL} alt="pokeIMG" />
             </div>
         </div>
-        
-
+        <div class="physicalDesc">
+            <div>
+                <span><strong>Height -</strong> ${pokemon.details.height/10}m</span>
+            </div>
+            <div>
+                <span><strong>Weight -</strong> ${pokemon.details.weight/10}kg</span>
+            </div>
+        </div>
+        <div class="region">
+            <div>
+                <span>Pok&eacutedex - ${pokemon.details.region}</span>
+            </div>
+        </div>
     `;
 
     main.innerHTML = cardHTML;
@@ -126,19 +147,8 @@ form.addEventListener("submit", (e) => {
 });
 
 /**
- * <div class="region">
-            <div>
-                <p>Pok&eacutedex - ${pokemon.details.region}</p>
-            </div>
-        </div>
-        <div class="physicalDesc">
-            <div>
-                <p>Height: ${pokemon.details.height/10}m</p>
-            </div>
-            <div>
-                <p>Weight: ${pokemon.details.weight/10}kg</p>
-            </div>
-        </div>
+ * 
+        
         <div class="statsDesc">
             <div>
                 <h2>Stats</h2>
