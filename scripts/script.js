@@ -128,7 +128,7 @@ function showPokemon(pokemon){
         <div class="type">
             <div>
                 <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[0]+".png"} alt="type" />
-                <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>
+                ${pokemon.details.types[1] ? `<img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>`: ''}
             </div>
         </div>
         <div class="statsDesc">
