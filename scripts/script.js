@@ -133,6 +133,17 @@ function showPokemon(pokemon){
                 <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>
             </div>
         </div>
+        <div class="statsDesc">
+            <span style="font-size: 1.7rem;">Stats</span>
+            <div class="stats">
+                <span><strong>HP -</strong> ${pokemon.details.stats[0]['hp']}</span>
+                <span><strong>Attack -</strong> ${pokemon.details.stats[1]['attack']}</span>
+                <span><strong>Defense -</strong> ${pokemon.details.stats[2]['defense']}</span>
+                <span><strong>Special Attack -</strong> ${pokemon.details.stats[3]['special-attack']}</span>
+                <span><strong>Special Defense -</strong> ${pokemon.details.stats[4]['special-defense']}</span>
+                <span><strong>Speed -</strong> ${pokemon.details.stats[5]['speed']}</span>
+            </div>
+        </div>
     `;
 
     main.innerHTML = cardHTML;
@@ -154,19 +165,4 @@ form.addEventListener("submit", (e) => {
     }
 });
 
-/**
- * 
-        
-        <div class="statsDesc">
-            <div>
-                <h2>Stats</h2>
-                <p>HP: ${pokemon.details.stats[0]['hp']}</p>
-                <p>Attack: ${pokemon.details.stats[1]['attack']}</p>
-                <p>Defense: ${pokemon.details.stats[2]['defense']}</p>
-                <p>Special Attack: ${pokemon.details.stats[3]['special-attack']}</p>
-                <p>Special Defense: ${pokemon.details.stats[4]['special-defense']}</p>
-                <p>Speed: ${pokemon.details.stats[5]['speed']}</p>
-            </div>
-        </div>
- */
 
