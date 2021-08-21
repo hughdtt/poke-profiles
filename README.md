@@ -1,4 +1,11 @@
 ## Poke Profiles
+A Vanilla Javascript Pokemon Profile project.
+Consuming the wonderful pokeAPI. Also though it was a good idea to use the js-wrapper to handle caching so we don't have to call the api on every search. They provided a nifty service worker to handle that. 
+
+You can play with it here: https://hughdtt.github.io/poke-profiles/
+
+## Installation
+You should be able to just fork and clone the git repository to your local system. It's just using plain old html/css/javascript. Just pop open the index.html and you're good to go.
 
 ## Third-Party
 Big thanks to:
