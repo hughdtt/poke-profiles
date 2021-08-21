@@ -1,11 +1,81 @@
-## Poke Profiles
-A Vanilla Javascript Pokemon Profile project.
-Consuming the wonderful pokeAPI. Also though it was a good idea to use the js-wrapper to handle caching so we don't have to call the api on every search. They provided a nifty service worker to handle that. 
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="poke-profiles\img\android-chrome-192x192.png" alt="Project logo"></a>
+</p>
 
+<h3 align="center">Pokemon Profile</h3>
+
+<div align="center">
+
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+  [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/hughdtt/poke-profiles/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/hughdtt/poke-profiles/pulls)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
+
+---
+
+<p align="center"> Simple web page using Vanilla Javascript to generate pokemon profiles. Showcasing PokeAPI.
+    <br> 
+</p>
+
+## 📝 Table of Contents
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [TODO](../TODO.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
 
-## Installation
-You should be able to just fork and clone the git repository to your local system. It's just using plain old html/css/javascript. Just pop open the index.html and you're good to go.
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Prerequisites
+What things you need to install the software and how to install them.
+
+```
+Give examples
+```
+
+### Installing
+A step by step series of examples that tell you how to get a development env running.
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo.
+
+### And coding style tests
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## 🎈 Usage <a name="usage"></a>
+Add notes about how to use the system.
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- Hat tip to anyone whose code was used
+- Inspiration
+- References
+
 
 ## Third-Party
 Big thanks to:
