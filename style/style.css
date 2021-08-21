@@ -31,7 +31,7 @@ input {
 }
 
 input::placeholder {
-    color: black;
+    color: #808080a1;
 }
 
 input:focus {
