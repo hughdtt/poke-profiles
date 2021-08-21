@@ -85,6 +85,9 @@ function showPokemon(pokemon){
     }
 
     const cardHTML = `
+        <div class="logo">
+            <img src=${"https://cdn2.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png"} alt="logo" />
+        </div>
         <div class="id">
             <div>
                 <span>${formatId(pokemon.id)}</span></br>
@@ -93,7 +96,7 @@ function showPokemon(pokemon){
         </div>
         <div class="titleCard">
             <div class="japName">
-                <p>${pokemon.altName}</p>
+                <span>${pokemon.altName}</span>
             </div>
             <div class="titleImg">
                 <img src=${pokemon.imageURL} alt="pokeIMG" />

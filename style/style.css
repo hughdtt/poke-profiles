@@ -2,23 +2,19 @@
 body {
     font-family: 'Raleway', sans-serif;
     color: white;
-    display:flex;
-    flex-flow: column wrap;
     overflow-x:hidden;
-}
-
-form {
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 main {
     display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(5, [col] 20vw ) ;
+    grid-gap: 5px;
+    grid-template-columns: repeat(5, [col] 22rem ) ;
     grid-template-rows: repeat(3, [row] auto  );
 }
-
-
 
 /* Search Component */
 input {
@@ -44,30 +40,52 @@ input:focus {
 
 /* ID component */
 .id{
-    font-size: 3vh;
+    font-size: 2rem;
     grid-column: col 1/ span 1;
     grid-row: row 1;
     justify-self: center;
 }
 
+/* Logo component */
+.logo {
+    grid-column: col 5/ span 1;
+    grid-row: row 1;
+    place-self: center center;
+}
+
+.logo img{
+    width: 13rem;
+    height: auto;
+}
+
 /* Title Img Component */
 .titleCard {
-    grid-column: col 1 / span 5;
+    grid-column: col 1 / span 4;
     grid-row: row 2;
-    justify-self: center;
-
+    padding-left: 2rem;
     display:grid;
 }
 
 .titleCard .japName{
-    font-size: 17vh;
-    grid-column: col 1/ span 3;
+    font-size: 13rem;
+    letter-spacing: -10px;
+    line-height: 0;
+    font-weight: 500;
+    grid-column: col 1/ span 4;
     grid-row: row 1;
+    place-self: center start;
 }
 
 .titleCard .titleImg{
-    grid-column: col 3/ span 3;
+    grid-column: col 2/ span 4;
     grid-row: row 1;
+    place-self: start start;
+}
+
+.titleCard .titleImg img{
+    height: auto;
+    width: 35rem;
+    
 }
 
 /* Region */
