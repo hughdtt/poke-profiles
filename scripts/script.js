@@ -47,7 +47,7 @@ async function getPokemon(pokemonName){
             pokemonObj.details.moves.push(response.abilities[id].ability.name)
         }
 
-        //Hardcoding this because api is missing
+        //Hardcoding this because api is missing doesn't have an easy to do it
         if (response.id <= 151){pokemonObj.details.region = 'Kanto Region'}
         if (response.id > 151 && response.id <= 251){pokemonObj.details.region = 'Johto Region'}
         if (response.id > 251 && response.id <= 386){pokemonObj.details.region = 'Hoenn Region'}
@@ -57,7 +57,8 @@ async function getPokemon(pokemonName){
         if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
         if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
         if (response.id > 809){pokemonObj.details.region = 'Galar Region', pokemonObj.altName = ''}
-        // console.table(pokemonObj.details.stats)
+
+        console.log(response)
     })
     showPokemon(pokemonObj);
 }
@@ -130,8 +131,6 @@ function showPokemon(pokemon){
     main.innerHTML = cardHTML;
 
 }
-
-getPokemon('bulbasaur')
 
 //Search utility
 form.addEventListener("submit", (e) => {

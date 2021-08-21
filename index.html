@@ -8,6 +8,7 @@
     <script src="./scripts/script.js" defer></script>
     <script src="./scripts/data.json"></script>
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+    <link rel="canonical" href="https://hughdtt.github.io/poke-profiles/" />
     <link rel="stylesheet" href="./style/style.css"></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,5 +19,11 @@
         <input type="text" id="search" placeholder="Search for a Pokemon..." autocomplete="off" />
     </form>
     <main id="main"></main>
+    <script>
+        // register ServiceWorker, to cache imgs
+        if (navigator.serviceWorker) {
+          navigator.serviceWorker.register('/poke-profiles/pokeapi-js-wrapper-sw.js', {scope: '/poke-profiles/'})
+        }
+    </script>
 </body>
 </html>

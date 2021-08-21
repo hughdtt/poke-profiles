@@ -10,6 +10,6 @@ You should be able to just fork and clone the git repository to your local syste
 ## Third-Party
 Big thanks to:
 https://github.com/sindresorhus/pokemon - providing japanese pokemon names
-pokeapi-js-wrapper - providing cache-saving ready api pokeAPI usage
+Browser-side with auto caching: pokeapi-js-wrapper by Alessandro Pezzé
 https://dribbble.com/shots/2859891--025-Pikachu/attachments/589409?mode=media - for design and inspiration
 Pokedex logo - https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9dex
