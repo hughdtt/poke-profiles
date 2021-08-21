@@ -61,13 +61,12 @@ You should be able to boot up the index.html and have a little local demo to pla
 Disclaimer: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Hat tip to everyone whose code was used, I'll make special mentions below.
 - Thanks to Dean Harrison for the Behance design inspiration! [Link](https://dribbble.com/shots/2859891--025-Pikachu/attachments/2859891?mode=media)
 - Thanks to Alessandro Pezze for PokeAPI. [Link](https://github.com/PokeAPI/pokeapi/)
 - Also big thanks to Alessandro Pezze for the Browser-side js wrapper used for auto image caching. [Link](https://github.com/PokeAPI/pokeapi-js-wrapper)
 - Thanks to Sinderorhus for the Japanese Pokemon Names JSON. [Link](https://github.com/sindresorhus/pokemon)
 - Credits to Lugia Sea for the Pokemon Type Icons. [Link](https://www.deviantart.com/lugia-sea/art/Pokemon-Type-Icons-Vector-869706864)
-- Credits to 'those-icons' at Flaticon.com for the favicon. [Link]("https://www.flaticon.com/authors/those-icons")
+- Credits to 'those-icons' at Flaticon.com for the favicon. [Link](https://www.flaticon.com/authors/those-icons)
 - Credits to Bulbapedia for the 'Pokedex' Logo. [Link](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9dex)
 - If I missed anyone and someone spots it, feel free to let me know and I'll be happy to update!
 
