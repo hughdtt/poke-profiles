@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Simple web page using Vanilla Javascript to generate pokemon profiles. Showcasing PokeAPI.
+<p align="center"> Simple web page using vanilla Javascript to generate pokemon profiles; showcasing PokeAPI.
     <br> 
 </p>
 
@@ -36,15 +36,9 @@ You can play with it here: https://hughdtt.github.io/poke-profiles/
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
-What things you need to install the software and how to install them.
-
-```
-##It'd be nice to have VSCode and the Live-Reload extension installed.
-##Otherwise, everything is ready to go as is.
-```
+Considering that's it's just plain old HTML/CSS/Javascript, you'll just need to have a modern browser installed! Of course, it'd be nice if you had VSCode and the Live-Reloader Extension installed aswell.
 
 ### Installing
-A step by step series to getting a development env running.
 
 Make project folder and navigate to it
 
@@ -56,17 +50,12 @@ cd project-folder
 Git Clone
 
 ```
-## You can clone this repository over HTTPS
 git clone https://github.com/hughdtt/poke-profiles.git
 ```
 
 That's it!
 
-```
-## If you're using VSCode and have the Live-Reload extension installed, you can simply right-click the index.html and hit 'Live Reload'.
-```
-
-Should be able to boot up the index.html and have a little local demo to play with.
+You should be able to boot up the index.html and have a little local demo to play with.
 
 ## 🎈 Usage <a name="usage"></a>
 Disclaimer: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
