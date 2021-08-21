@@ -67,7 +67,7 @@ const colours = {
     Normal: '#A8A77A',
     Fire: '#EE8130',
     Water: '#6390F0',
-    Electric: '#fac802e8',
+    Electric: '#ffd73ae8',
     Grass: '#7AC74C',
     Ice: '#96D9D6',
     Fighting: '#C22E28',
