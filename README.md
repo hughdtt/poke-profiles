@@ -32,6 +32,8 @@
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
 
+Disclaimer: App is best experienced on a desktop, but mobile versions are fine too. 
+
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
