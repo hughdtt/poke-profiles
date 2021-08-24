@@ -16,7 +16,7 @@ main {
     grid-template-rows: repeat(3, [row] auto  );
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     main{
         display: flex;
         flex-direction: column;
@@ -99,7 +99,7 @@ input:focus {
     
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .titleCard {
         display:flex;
         flex-flow: column wrap;
@@ -135,7 +135,7 @@ input:focus {
     padding-bottom: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .physicalDesc{
         grid-column: col 1 / span 1;
         grid-row: row 2;
@@ -163,7 +163,7 @@ input:focus {
     text-orientation: mixed;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .region {
         font-size: 1.4rem;
         padding-right: 1rem;
@@ -184,7 +184,7 @@ input:focus {
     padding-right: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .type {
         padding-left: 1.2rem;
         padding-bottom: 2rem;
@@ -219,7 +219,7 @@ input:focus {
     padding-top: 10px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .statsDesc {
         grid-column: col 4 / span 2;
         grid-row: row 2;
