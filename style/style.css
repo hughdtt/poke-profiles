@@ -129,6 +129,7 @@ input:focus {
         grid-column: col-start 1/ span 12;
         grid-row: row 1;
         place-self: start start;
+        padding-top: 0.3em;
         font-size: 9em;
         font-weight: 500;
         letter-spacing: -10px;
