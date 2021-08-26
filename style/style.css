@@ -73,6 +73,16 @@ input:focus {
     }
 }
 
+/* Search Autocomplete Styling */
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+* html .ui-autocomplete {
+    height: 100px;
+}
+
 /* ID component */
 .id{
     grid-column: col-start 1 / span -1;
