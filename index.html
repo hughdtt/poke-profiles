@@ -17,10 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" rel="stylesheet">
 </head>
 <body>
-    <form id="form">
-        <input type="text" id="search" placeholder="Search for a Pokemon..." autocomplete="off" />
-    </form>
-    <main id="main"></main>
+    <div id="wrapper">
+        <form id="form">
+            <input type="text" id="search" placeholder="Search for a Pokemon..." autocomplete="off" />
+        </form>
+        <main id="main"></main>
+    </div>
     <script>
         // register ServiceWorker, to cache imgs
         if (navigator.serviceWorker) {

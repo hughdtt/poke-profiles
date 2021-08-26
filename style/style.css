@@ -1,12 +1,16 @@
 /* Layout */
 body {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+/* For mobile */
+#wrapper{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    color: white;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 main {
