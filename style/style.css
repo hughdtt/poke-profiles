@@ -1,39 +1,48 @@
 /* Layout */
 body {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
     font-family: 'Raleway', sans-serif;
     color: white;
     overflow-x:hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 main {
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: repeat(5, [col] 22rem ) ;
-    grid-template-rows: repeat(3, [row] auto  );
+    grid-template-columns: repeat(1, [col-start] 1fr);
+    justify-items: center;
+}
+/* 
+@media only screen and (min-width: 1024px) {
+    main{
+        grid-template-columns: repeat(12, [col-start] 1fr);
+    }
+} */
+
+/* Logo component */
+.logo {
+    grid-column: col-start 1/ span -1;
+    grid-row: 1;
 }
 
-@media only screen and (max-width: 1024px) {
-    main{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.logo img{
+    width: 13rem;
+    height: auto;
+    padding-bottom: 2rem;
 }
 
 /* Search Component */
 input {
+    font-family: inherit;
+    font-size: 1.2rem;
+    color: black;
     border-radius: 10px;
     border: none;
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.2),
         0 15px 40px rgba(0, 0, 0, 0.2);
-    color: black;
-    font-family: inherit;
-    font-size: 1.2rem;
     padding: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -49,199 +58,102 @@ input:focus {
 
 /* ID component */
 .id{
-    font-size: 2rem;
-    grid-column: col 1/ span 1;
-    grid-row: row 1;
-    justify-self: center;
+    grid-column: col-start 1 / span -1;
+    grid-row: 2;
+    place-self: start;
+    font-size: 2em;
+    padding-left: 1em;
+    padding-bottom: 1em;
 }
 
-/* Logo component */
-.logo {
-    grid-column: col 5/ span 1;
-    grid-row: row 1;
-    place-self: center center;
-}
-
-.logo img{
-    width: 13rem;
-    height: auto;
-}
 
 /* Title Img Component */
 .titleCard {
-    grid-column: col 1 / span 4;
-    grid-row: row 2;
-    padding-left: 2rem;
-
-    display:grid;
+    /* For Parent */
+    grid-column: col 1 / span -1;
+    grid-row: 3;
+    /* For Children */
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .titleCard .japName{
-    font-size: 13rem;
-    letter-spacing: -10px;
-    line-height: 2;
-    font-weight: 500;
     grid-column: col 1/ span 4;
     grid-row: row 1;
-    
+    font-size: 4em;
+    font-weight: 500;
+    letter-spacing: -10px;
 }
 
 .titleCard .titleImg{
     grid-column: col 2/ span 4;
     grid-row: row 1;
-    place-self: start start;
 }
 
 .titleCard .titleImg img{
     height: auto;
-    width: 35rem;
+    width: 20rem;
     image-rendering: auto;
-    
-}
-
-@media only screen and (max-width: 1024px) {
-    .titleCard {
-        display:flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: center;
-        padding-left:0;
-    }
-    
-    .titleCard .japName{
-        font-size: 2rem;
-        font-weight: 500;
-        letter-spacing: 0.1rem;
-    }
-
-    .titleCard .titleImg img{
-        height: auto;
-        width: 20rem;
-    }
-}
-
-/* Physical Description Component */
-.physicalDesc{
-    grid-column: col 1 / span 1;
-    grid-row: row 2;
-    place-self: end end;
-    font-size: 1.4rem;
-    letter-spacing: 0.03em;
-    padding-right: 2rem;
-    padding-bottom: 3rem;
-}
-
-.physicalDesc div{
-    padding-bottom: 0.5rem;
-}
-
-@media only screen and (max-width: 1024px) {
-    .physicalDesc{
-        grid-column: col 1 / span 1;
-        grid-row: row 2;
-        place-self: end end;
-        font-size: 1.4rem;
-        letter-spacing: 0.03em;
-        padding-top: 1rem;
-        padding-right: 2rem;
-        padding-bottom: 3rem;
-    }
-    
-    .physicalDesc div{
-        padding-bottom: 0.5rem;
-    }
 }
 
 /* Region */
 .region {
-    grid-column: col 3 / span 1;
-    grid-row: row 2;
-    place-self: end end;
+    grid-column: col 1 / span -1;
+    grid-row: 4;
     font-size: 1.4rem;
-    padding-right: 1rem;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
 }
 
-@media only screen and (max-width: 1024px) {
-    .region {
-        font-size: 1.4rem;
-        padding-right: 1rem;
-        writing-mode: horizontal-tb;
-    }
+/* Physical Description Component */
+.physicalDesc{
+    grid-column: col 1 / span -1;
+    grid-row: 5;
+    visibility: hidden;
 }
-
 
 /* Type */
 .type {
-    grid-column: col 4 / span 2;
-    grid-row: row 2;
-    place-self: center center;
-    padding-bottom: 8rem;
+    grid-column: col 1 / span -1;
+    grid-row: 6;
+    padding-bottom: 1.5em; 
 }
 
-.type img{
-    padding-right: 1rem;
+.type img:nth-child(2){
+    padding-left: 1em;
 }
-
-@media only screen and (max-width: 1024px) {
-    .type {
-        padding-left: 1.2rem;
-        padding-bottom: 2rem;
-    }
-
-    .type img{
-        padding-top: 2rem;
-        height: auto;
-        width: 5rem;
-    }
-}
-
 /* Stats */
-.statsDesc {
-    grid-column: col 4 / span 2;
-    grid-row: row 2;
-    place-self: end center;
-    padding-bottom: 5rem;
-    padding-right: 5rem;
+.statsWrapper {
+    grid-column: col 1 / span -1;
+    grid-row: 7;
 }
 
-.statsDesc .stats{
+.statsWrapper #statsLabel{
+    text-align: center;
+    padding-bottom: 1em;
+}
+.statsWrapper #statsRow{
+    display:flex;
+    font-size: 1em;
+}
+
+#statsRow .statsColumn{
+    /* For Parent */
+    flex: 1 0 50%;
+    padding: 10px;
+    overflow: hidden;
+    /* For Child */
     display:flex;
     flex-flow: column wrap;
-    font-size: 1.4rem;
-    max-height: 7rem;
-    padding-right: 5rem;
 }
 
-.statsDesc .stats span{
-    padding-right: 30px;
-    padding-top: 10px;
+#statsRow .statsColumn span{
+    padding-bottom: 0.5em;
+    padding-right: 1.5em;
 }
 
-@media only screen and (max-width: 1024px) {
-    .statsDesc {
-        grid-column: col 4 / span 2;
-        grid-row: row 2;
-        place-self: end center;
-        padding-bottom: 5rem;
-        padding-right: 5rem;
-    }
-    
-    .statsDesc .stats{
-        display:flex;
-        flex-flow: column wrap;
-        font-size: 1.2rem;
-        max-height: 7rem;
-        max-width: 25rem;
-        padding-right: 4rem;
-    }
-    
-    .statsDesc .stats span{
-        padding-right: 30px;
-        padding-top: 10px;
-    }
-  }
+
+
 
 
 

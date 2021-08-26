@@ -131,15 +131,21 @@ function showPokemon(pokemon){
                 ${pokemon.details.types[1] ? `<img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>`: ''}
             </div>
         </div>
-        <div class="statsDesc">
-            <span style="font-size: 1.7rem;">Stats</span>
-            <div class="stats">
-                <span><strong>HP -</strong> ${pokemon.details.stats[0]['hp']}</span>
-                <span><strong>Attack -</strong> ${pokemon.details.stats[1]['attack']}</span>
-                <span><strong>Defense -</strong> ${pokemon.details.stats[2]['defense']}</span>
-                <span><strong>Special Attack -</strong> ${pokemon.details.stats[3]['special-attack']}</span>
-                <span><strong>Special Defense -</strong> ${pokemon.details.stats[4]['special-defense']}</span>
-                <span><strong>Speed -</strong> ${pokemon.details.stats[5]['speed']}</span>
+        <div class="statsWrapper">
+            <div id="statsLabel">
+                <span style="font-size: 1.7rem;">Stats</span>
+            </div>
+            <div id="statsRow">
+                <div class="statsColumn">
+                    <span><strong>HP -</strong> ${pokemon.details.stats[0]['hp']}</span>
+                    <span><strong>Attack -</strong> ${pokemon.details.stats[1]['attack']}</span>
+                    <span><strong>Defence -</strong> ${pokemon.details.stats[2]['defense']}</span>
+                </div>
+                <div class="statsColumn">
+                    <span><strong>Sp. Attack -</strong> ${pokemon.details.stats[3]['special-attack']}</span>
+                    <span><strong>Sp. Defence -</strong> ${pokemon.details.stats[4]['special-defense']}</span>
+                    <span><strong>Speed -</strong> ${pokemon.details.stats[5]['speed']}</span>
+                </div>
             </div>
         </div>
     `;
