@@ -119,14 +119,14 @@ input:focus {
 @media only screen and (min-width: 1024px) {
     .titleCard {
         /* For Parent */
-        grid-column: col-start 1 / span 8;
+        grid-column: col-start 1 / span 6;
         grid-row: 2;
         /* For Children */
         display: grid;
     }
     
     .titleCard .japName{
-        grid-column: col-start 1/ span 6;
+        grid-column: col-start 1/ span 12;
         grid-row: row 1;
         place-self: start start;
         font-size: 9em;
@@ -135,7 +135,7 @@ input:focus {
     }
     
     .titleCard .titleImg{
-        grid-column: col-start 2/ span 6;
+        grid-column: col-start 5/ span 6;
         grid-row: row 1;
     }
     
