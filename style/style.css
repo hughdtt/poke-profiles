@@ -19,12 +19,12 @@ main {
     grid-template-columns: repeat(1, [col-start] 1fr);
     justify-items: center;
 }
-/* 
+
 @media only screen and (min-width: 1024px) {
     main{
         grid-template-columns: repeat(12, [col-start] 1fr);
     }
-} */
+}
 
 /* Logo component */
 .logo {
@@ -36,6 +36,13 @@ main {
     width: 13rem;
     height: auto;
     padding-bottom: 2rem;
+}
+
+@media only screen and (min-width: 1024px) {
+    .logo {
+        grid-column: col-start 10/ span 2;
+        grid-row: 1;
+    }
 }
 
 /* Search Component */
@@ -60,6 +67,12 @@ input:focus {
     outline: none;
 }
 
+@media only screen and (min-width: 1024px) {
+    input {
+        margin-bottom: 1rem;
+    }
+}
+
 /* ID component */
 .id{
     grid-column: col-start 1 / span -1;
@@ -70,11 +83,19 @@ input:focus {
     padding-bottom: 1em;
 }
 
+@media only screen and (min-width: 1024px) {
+    .id{
+        grid-column: col-start 1 / span 2;
+        grid-row: 1;
+        place-self: start start;
+    }
+}
+
 
 /* Title Img Component */
 .titleCard {
     /* For Parent */
-    grid-column: col 1 / span -1;
+    grid-column: col-start 1 / span -1;
     grid-row: 3;
     /* For Children */
     display: flex;
@@ -84,16 +105,9 @@ input:focus {
 }
 
 .titleCard .japName{
-    grid-column: col 1/ span 4;
-    grid-row: row 1;
     font-size: 4em;
     font-weight: 500;
     letter-spacing: -10px;
-}
-
-.titleCard .titleImg{
-    grid-column: col 2/ span 4;
-    grid-row: row 1;
 }
 
 .titleCard .titleImg img{
@@ -102,33 +116,95 @@ input:focus {
     image-rendering: auto;
 }
 
+@media only screen and (min-width: 1024px) {
+    .titleCard {
+        /* For Parent */
+        grid-column: col-start 1 / span 8;
+        grid-row: 2;
+        /* For Children */
+        display: grid;
+    }
+    
+    .titleCard .japName{
+        grid-column: col-start 1/ span 6;
+        grid-row: row 1;
+        place-self: start start;
+        font-size: 9em;
+        font-weight: 500;
+        letter-spacing: -10px;
+    }
+    
+    .titleCard .titleImg{
+        grid-column: col-start 2/ span 6;
+        grid-row: row 1;
+    }
+    
+    .titleCard .titleImg img{
+        width: 30rem;
+    }
+}
+
 /* Region */
 .region {
-    grid-column: col 1 / span -1;
+    grid-column: col-start 1 / span -1;
     grid-row: 4;
     font-size: 1.4rem;
 }
 
+@media only screen and (min-width: 1024px) {
+    .region {
+        grid-column: col-start 7 / span 1;
+        grid-row: 2;
+        place-self: end center;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+}
+
 /* Physical Description Component */
 .physicalDesc{
-    grid-column: col 1 / span -1;
+    grid-column: col-start 1 / span -1;
     grid-row: 5;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
     visibility: hidden;
+}
+
+@media only screen and (min-width: 1024px) {
+    .physicalDesc{
+        grid-column: col-start 1 / span 2;
+        grid-row: 3;
+        place-self: start center;
+        visibility: visible;
+    }
+
+    .physicalDesc div{
+        padding-bottom: 0.5rem;
+    }
 }
 
 /* Type */
 .type {
-    grid-column: col 1 / span -1;
+    grid-column: col-start 1 / span -1;
     grid-row: 6;
     padding-bottom: 1.5em; 
 }
-
 .type img:nth-child(2){
     padding-left: 1em;
 }
+
+@media only screen and (min-width: 1024px) {
+    .type {
+        grid-column: col-start 9 / span 4;
+        grid-row: 2;
+        place-self: center center;
+        padding-bottom: 7em; 
+    }
+}
+
 /* Stats */
 .statsWrapper {
-    grid-column: col 1 / span -1;
+    grid-column: col-start 1 / span -1;
     grid-row: 7;
 }
 
@@ -154,6 +230,23 @@ input:focus {
 #statsRow .statsColumn span{
     padding-bottom: 0.5em;
     padding-right: 1.5em;
+}
+
+@media only screen and (min-width: 1024px) {
+    .statsWrapper {
+        grid-column: col-start 9 / span 4;
+        grid-row: 2;
+        place-self: end center;
+    }
+
+    .statsWrapper #statsLabel{
+        padding-bottom: 1.7em;
+    }
+
+    #statsRow .statsColumn span{
+        font-size: 1.4rem;
+        padding-right: 0.5em;
+    }
 }
 
 
