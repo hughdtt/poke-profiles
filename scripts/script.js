@@ -156,17 +156,32 @@ function showPokemon(pokemon){
 
 getPokemon('pikachu')
 
+//Search utility
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const pokemon = search.value;
+    if (pokemon) {
+        getPokemon(pokemon.toLowerCase()); //api returns names in lower case; this handles cases where user decides to search using capital letters
+        search.value='';
+    }
+    
+});
+
+
 //JqueryUI Autocomplete Search Utility
 $( function() {
     $.getJSON("/poke-profiles/scripts/data-en.json", function(data){ 
         $( "#search" ).autocomplete({
             source: data,
             select: function(event, ui) { 
+                //Search on select
                 $("#search").val(ui.item.label);
-                //Rewrote the addEventLister for Jquery
-                $("form").submit(function(e){
-                    e.preventDefault();
-                });
+                const pokemon = $("#search").val();
+                if (pokemon) {
+                    getPokemon(pokemon.toLowerCase());
+                    //Need to clear input field on select aswell
+                }
             }
         });
     }).fail(function(){
@@ -174,18 +189,6 @@ $( function() {
     });
 });
 
-//Search utility
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const pokemon = search.value;
-    console.log(pokemon)
-
-    if (pokemon) {
-        getPokemon(pokemon.toLowerCase()); //api returns names in lower case; this handles cases where user decides to search using capital letters
-        search.value = "";
-    }
-});
 
 
 
