@@ -22,7 +22,7 @@
 
 ## 📝 Table of Contents
 - [📝 Table of Contents](#-table-of-contents)
-- [Changelog - Planned Features](#changelog---planned-features)
+- [💻 Changelog - Planned Features](#-changelog---planned-features)
 - [🧐 Live deployment <a name = "live_deployment"></a>](#-live-deployment-)
 - [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
   - [Prerequisites](#prerequisites)
@@ -30,7 +30,7 @@
 - [🎈 Usage <a name="usage"></a>](#-usage-)
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
-## Changelog - Planned Features
+## 💻 Changelog - Planned Features
 - [ ] Search functionality
   - [ ] Autocomplete
     - [x] Autocomplete by name
