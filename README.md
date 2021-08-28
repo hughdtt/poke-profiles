@@ -22,12 +22,26 @@
 
 ## 📝 Table of Contents
 - [📝 Table of Contents](#-table-of-contents)
+- [Changelog - Planned Features](#changelog---planned-features)
 - [🧐 Live deployment <a name = "live_deployment"></a>](#-live-deployment-)
 - [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
 - [🎈 Usage <a name="usage"></a>](#-usage-)
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
+
+## Changelog - Planned Features
+- [] Search functionality
+  - [ ] Autocomplete
+    - [x] Autocomplete by name
+    - [x] Generate on select
+    - [ ] Styling 
+  - [ ] Search by Id
+- [ ] Pagination 
+  - [ ] By Row
+  - [ ] By Column
+- [ ] Animations
+- [ ] SFX
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
