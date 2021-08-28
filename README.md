@@ -31,7 +31,7 @@
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
 ## Changelog - Planned Features
-- [] Search functionality
+- [ ] Search functionality
   - [ ] Autocomplete
     - [x] Autocomplete by name
     - [x] Generate on select
