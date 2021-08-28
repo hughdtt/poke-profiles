@@ -20,7 +20,7 @@
     <br> 
 </p>
 
-![alt text](poke-profiles\img\pika-photo.PNG?raw=true)
+![alt text](\poke-profiles\img\pika-photo.PNG?raw=true)
 
 ## 📝 Table of Contents
 - [📝 Table of Contents](#-table-of-contents)
