@@ -53,7 +53,6 @@ async function getPokemon(pokemonName){
         if (response.id > 151 && response.id <= 251){pokemonObj.details.region = 'Johto Region'}
         if (response.id > 251 && response.id <= 386){pokemonObj.details.region = 'Hoenn Region'}
         if (response.id > 386 && response.id <= 493){pokemonObj.details.region = 'Sinnoh Region'}
-        if (response.id > 493 && response.id <= 493){pokemonObj.details.region = 'Sinnoh Region'}
         if (response.id > 493 && response.id <= 649){pokemonObj.details.region = 'Unova Region'}
         if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
         if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}

@@ -34,11 +34,12 @@
 
 ## 💻 Changelog - Planned Features
 - [ ] Search functionality
-  - [ ] Autocomplete
+  - [x] Autocomplete
     - [x] Autocomplete by name
     - [x] Generate on select
-    - [ ] Styling 
-  - [ ] Search by Id
+    - [x] Styling 
+    - [x] 'No results found'
+    - [ ] Reset search bar on select 
 - [ ] Pagination 
   - [ ] By Row
   - [ ] By Column
