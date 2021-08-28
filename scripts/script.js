@@ -58,6 +58,10 @@ async function getPokemon(pokemonName) {
         if (response.id > 721 && response.id <= 809) { pokemonObj.details.region = 'Alola Region' }
         if (response.id > 809) { pokemonObj.details.region = 'Galar Region' }
     })
+
+    await P.getPokemonSpeciesByName(pokemonName).then(function(response){
+        console.log(response)
+    });
     showPokemon(pokemonObj);
 }
 

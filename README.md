@@ -34,22 +34,20 @@
 
 ## 💻 Changelog - Planned Features
 - [x] Search functionality
-  - [x] Autocomplete
-    - [x] Autocomplete by name
-    - [x] Generate on select
-    - [x] Styling 
-    - [x] 'No results found'
-    - [x] Reset search bar on select 
 - [ ] Pagination 
-  - [ ] By Row
-  - [ ] By Column
-- [ ] Animations
-- [ ] SFX
+  - [ ] Fetch pokemon by Id
+  - [ ] 4 up and 5 down, selected bold
 - [ ] User enhancement
-  - [ ] Potential background colour improvement
-  - [ ] Hover over Type picture displays type name
   - [x] Galar Region Japanese Names
-- [ ] Web Components(?)
+  - [ ] Api Fetch for pokemon-species description
+  - [ ] Look into how to layout more information
+  - [ ] Potential background colour improvement - use pokemon colour for background
+  - [ ] Hover over Type picture displays type name
+  - [ ] Berries/ Items
+  - [ ] Animations
+  - [ ] SFX
+- [ ] Code enhancement
+  - [ ] Integrate Web Components
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
