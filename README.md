@@ -20,6 +20,8 @@
     <br> 
 </p>
 
+![alt text](poke-profiles\img\pika-photo.PNG?raw=true)
+
 ## 📝 Table of Contents
 - [📝 Table of Contents](#-table-of-contents)
 - [💻 Changelog - Planned Features](#-changelog---planned-features)
