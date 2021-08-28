@@ -24,14 +24,14 @@ async function getPokemon(pokemonName){
     };
 
     //Japanese Name conversion
-    const altName = await fetch('/poke-profiles/scripts/data-jp.json');
-    const altNameData = await altName.json();
+    const jpName = await fetch('/poke-profiles/scripts/data-jp.json');
+    const jpData = await jpName.json();
 
     //Call API to grab pokemon details
     await P.getPokemonByName(pokemonName).then(function(response) {
         pokemonObj.id = response.id
         pokemonObj.name = response.name.toUpperCase();
-        pokemonObj.altName = altNameData[response.id - 1]; 
+        pokemonObj.altName = jpData[response.id - 1];
         pokemonObj.imageURL = response.sprites.other["official-artwork"].front_default;
         pokemonObj.details.height = response.height;
         pokemonObj.details.weight = response.weight;
@@ -57,7 +57,8 @@ async function getPokemon(pokemonName){
         if (response.id > 493 && response.id <= 649){pokemonObj.details.region = 'Unova Region'}
         if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
         if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
-        if (response.id > 809){pokemonObj.details.region = 'Galar Region', pokemonObj.altName = ''}
+        if (response.id > 809){pokemonObj.details.region = 'Galar Region'}
+        console.log(pokemonObj)
     })
     showPokemon(pokemonObj);
 }
