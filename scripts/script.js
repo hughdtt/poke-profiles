@@ -58,7 +58,6 @@ async function getPokemon(pokemonName){
         if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
         if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
         if (response.id > 809){pokemonObj.details.region = 'Galar Region'}
-        console.log(pokemonObj)
     })
     showPokemon(pokemonObj);
 }
@@ -183,8 +182,24 @@ $( function() {
                     getPokemon(pokemon.toLowerCase());
                     //Need to clear input field on select aswell
                 }
+            },
+            response: function(event, ui) {
+                if (!ui.content.length) {
+                    var noResult = {label:"No results found", value:"No results found" };
+                    ui.content.push(noResult);
+                    
+                } 
             }
         });
+        $.ui.autocomplete.prototype._renderItem = function (ul, item) {        
+            var t = String(item.value).replace(
+                    new RegExp(this.term, "gi"),
+                    "<span class='menu-item-bold'>$&</span>");
+            return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<div>" + t + "</div>")
+                .appendTo(ul);
+        };
     }).fail(function(){
         console.log("Error fetching Pokemon en-names");
     });

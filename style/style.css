@@ -73,14 +73,47 @@ input:focus {
     }
 }
 
-/* Search Autocomplete Styling */
+
+/* Search JqueryAutocomplete Styling */
 .ui-autocomplete {
-    max-height: 100px;
+    max-height: 200px;
+    border-radius: 5px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 * html .ui-autocomplete {
     height: 100px;
+}
+.ui-menu-item {
+    font-family: inherit;
+    font-weight: 100;
+    font-size: 1.2em;
+}
+
+.ui-menu-item .menu-item-bold {
+    background-color:#FDFD96;
+    border-radius: 5px;
+    color: #555555;
+}
+.ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 20px;
+    color: #555555;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.ui-state-hover, .ui-state-active {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
 }
 
 /* ID component */
@@ -259,6 +292,8 @@ input:focus {
         padding-right: 0.5em;
     }
 }
+
+
 
 
 
