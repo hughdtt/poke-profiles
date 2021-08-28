@@ -24,7 +24,7 @@ async function getPokemon(pokemonName){
     };
 
     //Japanese Name conversion
-    const altName = await fetch('/poke-profiles/scripts/data.json');
+    const altName = await fetch('/poke-profiles/scripts/data-jp.json');
     const altNameData = await altName.json();
 
     //Call API to grab pokemon details

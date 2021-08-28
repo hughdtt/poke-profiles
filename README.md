@@ -47,6 +47,7 @@
 - [ ] User enhancement
   - [ ] Potential background colour improvement
   - [ ] Hover over Type picture displays type name
+  - [x] Galar Region Japanese Names
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
