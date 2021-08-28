@@ -3,7 +3,7 @@ const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
-async function getPokemon(pokemonName){
+async function getPokemon(pokemonName) {
     //Init the PokeAPI wrapper
     const P = new Pokedex.Pokedex()
 
@@ -19,7 +19,7 @@ async function getPokemon(pokemonName){
             region: '',
             stats: [],
             types: [],
-            moves:[],
+            moves: [],
         },
     };
 
@@ -28,35 +28,35 @@ async function getPokemon(pokemonName){
     const jpData = await jpName.json();
 
     //Call API to grab pokemon details
-    await P.getPokemonByName(pokemonName).then(function(response) {
+    await P.getPokemonByName(pokemonName).then(function (response) {
         pokemonObj.id = response.id
         pokemonObj.name = response.name.toUpperCase();
         pokemonObj.altName = jpData[response.id - 1];
         pokemonObj.imageURL = response.sprites.other["official-artwork"].front_default;
         pokemonObj.details.height = response.height;
         pokemonObj.details.weight = response.weight;
-        for (let element in response.types){
+        for (let element in response.types) {
             let string = response.types[element].type.name
-            pokemonObj.details.types.push(string.charAt(0).toUpperCase() + string.slice(1)) 
+            pokemonObj.details.types.push(string.charAt(0).toUpperCase() + string.slice(1))
         }
-        for (let type in response.stats){
+        for (let type in response.stats) {
             let statObj = {};
             statObj[`${response.stats[type].stat.name}`] = `${response.stats[type].base_stat}`
             pokemonObj.details.stats.push(statObj)
         }
-        for (let id in response.abilities){
+        for (let id in response.abilities) {
             pokemonObj.details.moves.push(response.abilities[id].ability.name)
         }
 
         //Hardcoding this because api is missing doesn't have an easy to do it
-        if (response.id <= 151){pokemonObj.details.region = 'Kanto Region'}
-        if (response.id > 151 && response.id <= 251){pokemonObj.details.region = 'Johto Region'}
-        if (response.id > 251 && response.id <= 386){pokemonObj.details.region = 'Hoenn Region'}
-        if (response.id > 386 && response.id <= 493){pokemonObj.details.region = 'Sinnoh Region'}
-        if (response.id > 493 && response.id <= 649){pokemonObj.details.region = 'Unova Region'}
-        if (response.id > 649 && response.id <= 721){pokemonObj.details.region = 'Kalos Region'}
-        if (response.id > 721 && response.id <= 809){pokemonObj.details.region = 'Alola Region'}
-        if (response.id > 809){pokemonObj.details.region = 'Galar Region'}
+        if (response.id <= 151) { pokemonObj.details.region = 'Kanto Region' }
+        if (response.id > 151 && response.id <= 251) { pokemonObj.details.region = 'Johto Region' }
+        if (response.id > 251 && response.id <= 386) { pokemonObj.details.region = 'Hoenn Region' }
+        if (response.id > 386 && response.id <= 493) { pokemonObj.details.region = 'Sinnoh Region' }
+        if (response.id > 493 && response.id <= 649) { pokemonObj.details.region = 'Unova Region' }
+        if (response.id > 649 && response.id <= 721) { pokemonObj.details.region = 'Kalos Region' }
+        if (response.id > 721 && response.id <= 809) { pokemonObj.details.region = 'Alola Region' }
+        if (response.id > 809) { pokemonObj.details.region = 'Galar Region' }
     })
     showPokemon(pokemonObj);
 }
@@ -84,7 +84,7 @@ const colours = {
 };
 
 //Pass data through to page
-function showPokemon(pokemon){
+function showPokemon(pokemon) {
     //Update background colour based on type
     document.body.style.backgroundColor = colours[pokemon.details.types[0]];
 
@@ -113,10 +113,10 @@ function showPokemon(pokemon){
         </div>
         <div class="physicalDesc">
             <div>
-                <span><strong>Height -</strong> ${pokemon.details.height/10}m</span>
+                <span><strong>Height -</strong> ${pokemon.details.height / 10}m</span>
             </div>
             <div>
-                <span><strong>Weight -</strong> ${pokemon.details.weight/10}kg</span>
+                <span><strong>Weight -</strong> ${pokemon.details.weight / 10}kg</span>
             </div>
         </div>
         <div class="region">
@@ -126,8 +126,8 @@ function showPokemon(pokemon){
         </div>
         <div class="type">
             <div>
-                <img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[0]+".png"} alt="type" />
-                ${pokemon.details.types[1] ? `<img src=${"img/Pokemon_Type_Icon_"+pokemon.details.types[1]+".png"} alt=""/>`: ''}
+                <img src=${"img/Pokemon_Type_Icon_" + pokemon.details.types[0] + ".png"} alt="type" />
+                ${pokemon.details.types[1] ? `<img src=${"img/Pokemon_Type_Icon_" + pokemon.details.types[1] + ".png"} alt=""/>` : ''}
             </div>
         </div>
         <div class="statsWrapper">
@@ -148,9 +148,7 @@ function showPokemon(pokemon){
             </div>
         </div>
     `;
-
     main.innerHTML = cardHTML;
-
 }
 
 getPokemon('pikachu')
@@ -161,45 +159,46 @@ form.addEventListener("submit", (e) => {
 
     const pokemon = search.value;
     if (pokemon) {
-        getPokemon(pokemon.toLowerCase()); //api returns names in lower case; this handles cases where user decides to search using capital letters
-        search.value='';
+        getPokemon(pokemon.toLowerCase());
+        search.value = '';
     }
-    
+
 });
 
 
 //JqueryUI Autocomplete Search Utility
-$( function() {
-    $.getJSON("/poke-profiles/scripts/data-en.json", function(data){ 
-        $( "#search" ).autocomplete({
+$(function () {
+    //try to grab english names
+    $.getJSON("/poke-profiles/scripts/data-en.json", function (data) {
+        let prompt = "";
+        $("#search").val(prompt).focus(function() { $(this).val(''); }).autocomplete({
             source: data,
-            select: function(event, ui) { 
-                //Search on select
-                $("#search").val(ui.item.label);
-                const pokemon = $("#search").val();
-                if (pokemon) {
-                    getPokemon(pokemon.toLowerCase());
-                    //Need to clear input field on select aswell
+            response: function (event, ui) {
+                if (!ui.content.length) {
+                    var noResult = { label: "No results found", value: "No results found" };
+                    ui.content.push(noResult);
                 }
             },
-            response: function(event, ui) {
-                if (!ui.content.length) {
-                    var noResult = {label:"No results found", value:"No results found" };
-                    ui.content.push(noResult);
-                    
-                } 
+            select: function (event, ui) {
+                //Search on select
+                const pokemon = ui.item.label;
+                if (pokemon) {
+                    getPokemon(pokemon.toLowerCase());
+                }
+                $('#search').blur();
             }
         });
-        $.ui.autocomplete.prototype._renderItem = function (ul, item) {        
+        //Highlight search field
+        $.ui.autocomplete.prototype._renderItem = function (ul, item) {
             var t = String(item.value).replace(
-                    new RegExp(this.term, "gi"),
-                    "<span class='menu-item-bold'>$&</span>");
+                new RegExp(this.term, "gi"),
+                "<span class='menu-item-bold'>$&</span>");
             return $("<li></li>")
                 .data("item.autocomplete", item)
                 .append("<div>" + t + "</div>")
                 .appendTo(ul);
         };
-    }).fail(function(){
+    }).fail(function () {
         console.log("Error fetching Pokemon en-names");
     });
 });

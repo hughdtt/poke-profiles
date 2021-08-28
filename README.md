@@ -33,13 +33,13 @@
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
 ## 💻 Changelog - Planned Features
-- [ ] Search functionality
+- [x] Search functionality
   - [x] Autocomplete
     - [x] Autocomplete by name
     - [x] Generate on select
     - [x] Styling 
     - [x] 'No results found'
-    - [ ] Reset search bar on select 
+    - [x] Reset search bar on select 
 - [ ] Pagination 
   - [ ] By Row
   - [ ] By Column
@@ -49,6 +49,7 @@
   - [ ] Potential background colour improvement
   - [ ] Hover over Type picture displays type name
   - [x] Galar Region Japanese Names
+- [ ] Web Components(?)
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
