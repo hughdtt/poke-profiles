@@ -302,17 +302,15 @@ input:focus {
     padding-right: 1em;
 }
 
-@media only screen and (min-width: 1024px) {
-    .statsWrapper {
-        grid-column: col-start 9 / span 4;
-        grid-row: 2;
-        place-self: end center;
-    }
+#pagination a:hover{
+    cursor: pointer;
+}
 
+@media only screen and (min-width: 1024px) {
     #pagination{
         grid-column: col-start 1 / span 12;
         grid-row: 7;
-        padding-top: 3em;
+        padding-top: 5em;
     }
 }
 

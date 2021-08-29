@@ -25,6 +25,11 @@ const colours = {
     Fairy: '#D685AD',
 };
 
+//Cheeky one-liner
+const formatId = (id) => {
+    return id < 100 ? (id < 10 ? `#00${id}` : `#0${id}`) : `#${id}`;
+}
+
 
 async function getPokemon(pokemonName) {
     //Init the PokeAPI wrapper
@@ -100,12 +105,13 @@ async function getPokemonSpecies(pokemonName){
         }
         P.getPokemonsList(interval).then(function(response) {
             for (let i = 0; i < response.results.length; i++){
-                const pagItem = document.createElement("a");
-                pagItem.href = response.results[i].url
-                pagItem.classList.add("pokeID");
-                pagItem.target = "_blank";
-                pagItem.innerText = response.results[i].name;
-                paginationEl.appendChild(pagItem);
+                const pagLink = document.createElement("a");
+                const pokemon = response.results[i].name
+                pagLink.innerHTML = pokemon;
+                pagLink.onclick = function(){
+                    getPokemon(pokemon)
+                }
+                paginationEl.appendChild(pagLink);
             }
         });
     });
@@ -117,11 +123,6 @@ async function getPokemonSpecies(pokemonName){
 function showPokemon(pokemon) {
     //Update background colour based on type
     document.body.style.backgroundColor = colours[pokemon.details.types[0]];
-
-    //Cheeky one-liner
-    const formatId = (id) => {
-        return id < 100 ? (id < 10 ? `#00${id}` : `#0${id}`) : `#${id}`;
-    }
 
     const cardHTML = `
         <div class="logo">
@@ -232,6 +233,11 @@ $(function () {
         };
     }).fail(function () {
         console.log("Error fetching Pokemon en-names");
+    });
+
+    //Pagination bind
+    $('#pagination span').click(function(){
+        console.log($(this).val())
     });
 });
 

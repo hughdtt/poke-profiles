@@ -35,8 +35,10 @@
 ## 💻 Changelog - Planned Features
 - [x] Search functionality
 - [ ] Pagination 
-  - [ ] Fetch pokemon by Id
-  - [ ] 4 up and 5 down, selected bold
+  - [x] Functionality
+  - [ ] Optimization (slow atm due to loops)
+  - [ ] Go by Id rather than name
+  - [ ] Styling (arrows)
 - [ ] User enhancement
   - [x] Galar Region Japanese Names
   - [ ] Api Fetch for pokemon-species description
