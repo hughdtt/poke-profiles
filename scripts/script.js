@@ -3,6 +3,29 @@ const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
+//Background Colours
+const colours = {
+    Normal: '#A8A77A',
+    Fire: '#EE8130',
+    Water: '#6390F0',
+    Electric: '#ffd73ae8',
+    Grass: '#7AC74C',
+    Ice: '#96D9D6',
+    Fighting: '#C22E28',
+    Poison: '#A33EA1',
+    Ground: '#E2BF65',
+    Flying: '#A98FF3',
+    Psychic: '#F95587',
+    Bug: '#A6B91A',
+    Rock: '#B6A136',
+    Ghost: '#735797',
+    Dragon: '#6F35FC',
+    Dark: '#705746',
+    Steel: '#B7B7CE',
+    Fairy: '#D685AD',
+};
+
+
 async function getPokemon(pokemonName) {
     //Init the PokeAPI wrapper
     const P = new Pokedex.Pokedex()
@@ -58,34 +81,37 @@ async function getPokemon(pokemonName) {
         if (response.id > 721 && response.id <= 809) { pokemonObj.details.region = 'Alola Region' }
         if (response.id > 809) { pokemonObj.details.region = 'Galar Region' }
     })
-
-    await P.getPokemonSpeciesByName(pokemonName).then(function(response){
-        console.log(response)
-    });
-    showPokemon(pokemonObj);
+    
+    await showPokemon(pokemonObj);
+    getPokemonSpecies(pokemonName);
 }
 
-//Background Colours
-const colours = {
-    Normal: '#A8A77A',
-    Fire: '#EE8130',
-    Water: '#6390F0',
-    Electric: '#ffd73ae8',
-    Grass: '#7AC74C',
-    Ice: '#96D9D6',
-    Fighting: '#C22E28',
-    Poison: '#A33EA1',
-    Ground: '#E2BF65',
-    Flying: '#A98FF3',
-    Psychic: '#F95587',
-    Bug: '#A6B91A',
-    Rock: '#B6A136',
-    Ghost: '#735797',
-    Dragon: '#6F35FC',
-    Dark: '#705746',
-    Steel: '#B7B7CE',
-    Fairy: '#D685AD',
-};
+async function getPokemonSpecies(pokemonName){
+    //Init the PokeAPI wrapper
+    const P = new Pokedex.Pokedex()
+    const paginationEl = document.getElementById("pagination");
+    const interval = {
+        offset: 1,
+        limit: 10,
+      }
+    await P.getPokemonSpeciesByName(pokemonName).then(function(response){
+        if (response.id > 5){
+            interval.offset = response.id - 5
+        }
+        P.getPokemonsList(interval).then(function(response) {
+            for (let i = 0; i < response.results.length; i++){
+                const pagItem = document.createElement("a");
+                pagItem.href = response.results[i].url
+                pagItem.classList.add("pokeID");
+                pagItem.target = "_blank";
+                pagItem.innerText = response.results[i].name;
+                paginationEl.appendChild(pagItem);
+            }
+        });
+    });
+    
+}
+
 
 //Pass data through to page
 function showPokemon(pokemon) {
@@ -151,13 +177,15 @@ function showPokemon(pokemon) {
                 </div>
             </div>
         </div>
+        <div id="pagination"></div>
     `;
     main.innerHTML = cardHTML;
 }
 
+//Load init page on pikachu
 getPokemon('pikachu')
 
-//Search utility
+//Search on submit utility
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -170,7 +198,7 @@ form.addEventListener("submit", (e) => {
 });
 
 
-//JqueryUI Autocomplete Search Utility
+//JqueryUI Autocomplete - Search on select Utility
 $(function () {
     //try to grab english names
     $.getJSON("/poke-profiles/scripts/data-en.json", function (data) {

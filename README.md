@@ -41,11 +41,13 @@
   - [x] Galar Region Japanese Names
   - [ ] Api Fetch for pokemon-species description
   - [ ] Look into how to layout more information
+  - [ ] Redo retrieving pokemon details to account for different forms
   - [ ] Potential background colour improvement - use pokemon colour for background
   - [ ] Hover over Type picture displays type name
   - [ ] Berries/ Items
   - [ ] Animations
   - [ ] SFX
+  - [ ] Img load times
 - [ ] Code enhancement
   - [ ] Integrate Web Components
 
