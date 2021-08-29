@@ -3,6 +3,14 @@ const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
+//Init the PokeAPI wrapper
+const P = new Pokedex.Pokedex()
+
+//Cheeky one-liner
+const formatId = (id) => {
+    return id < 100 ? (id < 10 ? `#00${id}` : `#0${id}`) : `#${id}`;
+}
+
 //Background Colours
 const colours = {
     Normal: '#A8A77A',
@@ -25,104 +33,103 @@ const colours = {
     Fairy: '#D685AD',
 };
 
-//Cheeky one-liner
-const formatId = (id) => {
-    return id < 100 ? (id < 10 ? `#00${id}` : `#0${id}`) : `#${id}`;
-}
-
-
-async function getPokemon(pokemonName) {
-    //Init the PokeAPI wrapper
-    const P = new Pokedex.Pokedex()
-
+const generateProfile = async (pokemonName) => {
     //Init pokemonObj so we can save data we need
     let pokemonObj = {
-        id: 0,
-        name: '',
-        altName: '',
-        imageURL: '',
-        details: {
+        _id: 0,
+        national_id: 0,
+        names: {
+            en: '',
+            jp: '',
+        },
+        description: {
+            flavor_text: '',
             height: '',
             weight: '',
-            region: '',
             stats: [],
+            color: '',
             types: [],
             moves: [],
+            region: '',
         },
+        forms: [],
+        evolutions: [],
+        art_url: '',
+        interval_id: [],
     };
 
-    //Japanese Name conversion
-    const jpName = await fetch('/poke-profiles/scripts/data-jp.json');
-    const jpData = await jpName.json();
+    await getSpeciesData(pokemonName, pokemonObj);
+    await getGeneralData(pokemonName, pokemonObj);
+    showPokemon(pokemonObj);
+    console.log(pokemonObj)
+}
 
+const getSpeciesData = async (pokemon, model) => {
     //Call API to grab pokemon details
-    await P.getPokemonByName(pokemonName).then(function (response) {
-        pokemonObj.id = response.id
-        pokemonObj.name = response.name.toUpperCase();
-        pokemonObj.altName = jpData[response.id - 1];
-        pokemonObj.imageURL = response.sprites.other["official-artwork"].front_default;
-        pokemonObj.details.height = response.height;
-        pokemonObj.details.weight = response.weight;
-        for (let element in response.types) {
-            let string = response.types[element].type.name
-            pokemonObj.details.types.push(string.charAt(0).toUpperCase() + string.slice(1))
-        }
-        for (let type in response.stats) {
-            let statObj = {};
-            statObj[`${response.stats[type].stat.name}`] = `${response.stats[type].base_stat}`
-            pokemonObj.details.stats.push(statObj)
-        }
-        for (let id in response.abilities) {
-            pokemonObj.details.moves.push(response.abilities[id].ability.name)
-        }
-
-        //Hardcoding this because api is missing doesn't have an easy to do it
-        if (response.id <= 151) { pokemonObj.details.region = 'Kanto Region' }
-        if (response.id > 151 && response.id <= 251) { pokemonObj.details.region = 'Johto Region' }
-        if (response.id > 251 && response.id <= 386) { pokemonObj.details.region = 'Hoenn Region' }
-        if (response.id > 386 && response.id <= 493) { pokemonObj.details.region = 'Sinnoh Region' }
-        if (response.id > 493 && response.id <= 649) { pokemonObj.details.region = 'Unova Region' }
-        if (response.id > 649 && response.id <= 721) { pokemonObj.details.region = 'Kalos Region' }
-        if (response.id > 721 && response.id <= 809) { pokemonObj.details.region = 'Alola Region' }
-        if (response.id > 809) { pokemonObj.details.region = 'Galar Region' }
-    })
-    
-    await showPokemon(pokemonObj);
-    getPokemonSpecies(pokemonName);
-}
-
-async function getPokemonSpecies(pokemonName){
-    //Init the PokeAPI wrapper
-    const P = new Pokedex.Pokedex()
-    const paginationEl = document.getElementById("pagination");
-    const interval = {
-        offset: 1,
-        limit: 10,
-      }
-    await P.getPokemonSpeciesByName(pokemonName).then(function(response){
-        if (response.id > 5){
-            interval.offset = response.id - 5
-        }
-        P.getPokemonsList(interval).then(function(response) {
-            for (let i = 0; i < response.results.length; i++){
-                const pagLink = document.createElement("a");
-                const pokemon = response.results[i].name
-                pagLink.innerHTML = pokemon;
-                pagLink.onclick = function(){
-                    getPokemon(pokemon)
-                }
-                paginationEl.appendChild(pagLink);
+    await P.getPokemonSpeciesByName(pokemon).then(function (resp) {
+        model._id = resp.id;
+        for (let i in resp.pokedex_numbers){
+            if (resp.pokedex_numbers[i].pokedex.name == 'national'){
+                model.national_id = resp.pokedex_numbers[i].entry_number;
             }
-        });
+        }
+        for (let i in resp.names){
+            if (resp.names[i].language.name == 'en'){
+                model.names.en = resp.names[i].name;
+            }
+            if (resp.names[i].language.name == 'ja-Hrkt'){
+                model.names.jp = resp.names[i].name;
+            }
+        };
+        for (let i in resp.flavor_text_entries){
+            if(resp.flavor_text_entries[i].language.name == 'en' && resp.flavor_text_entries[i].version.name == 'firered'){
+                model.description.flavor_text = resp.flavor_text_entries[i].flavor_text;   
+            }
+        }
+        model.description.color = resp.color.name;
+        model.forms = resp.varieties
     });
-    
 }
 
+const getGeneralData = async (pokemon, model) => {
+    //Call API to grab pokemon details
+    await P.getPokemonByName(model.forms[0].pokemon.name).then(function (resp) {
+        model.art_url = resp.sprites.other["official-artwork"].front_default;
+        model.description.height = resp.height;
+        model.description.weight = resp.weight;
+        for (let i in resp.types) {
+            let string = resp.types[i].type.name
+            model.description.types.push(string.charAt(0).toUpperCase() + string.slice(1))
+        }
+        for (let i in resp.stats) {
+            let statObj = {};
+            statObj[`${resp.stats[i].stat.name}`] = `${resp.stats[i].base_stat}`
+            model.description.stats.push(statObj)
+        }
+        for (let i in resp.abilities) {
+            model.description.moves.push(resp.abilities[i].ability.name)
+        }
+        //Hardcoding this because api is missing doesn't have an easy to do it
+        if (resp.id <= 151) { model.description.region = 'Kanto Region' }
+        if (resp.id > 151 && resp.id <= 251) { model.description.region = 'Johto Region' }
+        if (resp.id > 251 && resp.id <= 386) { model.description.region = 'Hoenn Region' }
+        if (resp.id > 386 && resp.id <= 493) { model.description.region = 'Sinnoh Region' }
+        if (resp.id > 493 && resp.id <= 649) { model.description.region = 'Unova Region' }
+        if (resp.id > 649 && resp.id <= 721) { model.description.region = 'Kalos Region' }
+        if (resp.id > 721 && resp.id <= 809) { model.description.region = 'Alola Region' }
+        if (resp.id > 809) { model.description.region = 'Galar Region' }
 
-//Pass data through to page
-function showPokemon(pokemon) {
+        if (resp.id > 5) {
+            for (let i = 0; i < 10; i++){
+                model.interval_id.push(resp.id - 4 + i)
+            }
+        }
+    });
+}
+
+const showPokemon = (model) => {
     //Update background colour based on type
-    document.body.style.backgroundColor = colours[pokemon.details.types[0]];
+    document.body.style.backgroundColor = colours[model.description.types[0]];
 
     const cardHTML = `
         <div class="logo">
@@ -130,35 +137,35 @@ function showPokemon(pokemon) {
         </div>
         <div class="id">
             <div>
-                <span>${formatId(pokemon.id)}</span></br>
-                <span>${pokemon.name}</span>
+                <span>${formatId(model.national_id)}</span></br>
+                <span>${model.names.en}</span>
             </div>
         </div>
         <div class="titleCard">
             <div class="japName">
-                <span>${pokemon.altName}</span>
+                <span>${model.names.jp}</span>
             </div>
             <div class="titleImg">
-                <img src=${pokemon.imageURL} alt="pokeIMG" />
+                <img src=${model.art_url} alt="pokeIMG" />
             </div>
         </div>
         <div class="physicalDesc">
             <div>
-                <span><strong>Height -</strong> ${pokemon.details.height / 10}m</span>
+                <span><strong>Height -</strong> ${model.description.height / 10}m</span>
             </div>
             <div>
-                <span><strong>Weight -</strong> ${pokemon.details.weight / 10}kg</span>
+                <span><strong>Weight -</strong> ${model.description.weight / 10}kg</span>
             </div>
         </div>
         <div class="region">
             <div>
-                <span>Pok&eacutedex - ${pokemon.details.region}</span>
+                <span>Pok&eacutedex - ${model.description.region}</span>
             </div>
         </div>
         <div class="type">
             <div>
-                <img src=${"img/Pokemon_Type_Icon_" + pokemon.details.types[0] + ".png"} alt="type" />
-                ${pokemon.details.types[1] ? `<img src=${"img/Pokemon_Type_Icon_" + pokemon.details.types[1] + ".png"} alt=""/>` : ''}
+                <img src=${"img/Pokemon_Type_Icon_" + model.description.types[0] + ".png"} alt="type" />
+                ${model.description.types[1] ? `<img src=${"img/Pokemon_Type_Icon_" + model.description.types[1] + ".png"} alt=""/>` : ''}
             </div>
         </div>
         <div class="statsWrapper">
@@ -167,24 +174,25 @@ function showPokemon(pokemon) {
             </div>
             <div id="statsRow">
                 <div class="statsColumn">
-                    <span><strong>HP -</strong> ${pokemon.details.stats[0]['hp']}</span>
-                    <span><strong>Attack -</strong> ${pokemon.details.stats[1]['attack']}</span>
-                    <span><strong>Defence -</strong> ${pokemon.details.stats[2]['defense']}</span>
+                    <span><strong>HP -</strong> ${model.description.stats[0]['hp']}</span>
+                    <span><strong>Attack -</strong> ${model.description.stats[1]['attack']}</span>
+                    <span><strong>Defence -</strong> ${model.description.stats[2]['defense']}</span>
                 </div>
                 <div class="statsColumn">
-                    <span><strong>Sp. Attack -</strong> ${pokemon.details.stats[3]['special-attack']}</span>
-                    <span><strong>Sp. Defence -</strong> ${pokemon.details.stats[4]['special-defense']}</span>
-                    <span><strong>Speed -</strong> ${pokemon.details.stats[5]['speed']}</span>
+                    <span><strong>Sp. Attack -</strong> ${model.description.stats[3]['special-attack']}</span>
+                    <span><strong>Sp. Defence -</strong> ${model.description.stats[4]['special-defense']}</span>
+                    <span><strong>Speed -</strong> ${model.description.stats[5]['speed']}</span>
                 </div>
             </div>
         </div>
         <div id="pagination"></div>
+        <div id="flavor-text"><span>${model.description.flavor_text}</span></div>
     `;
     main.innerHTML = cardHTML;
 }
 
 //Load init page on pikachu
-getPokemon('pikachu')
+generateProfile('pikachu')
 
 //Search on submit utility
 form.addEventListener("submit", (e) => {
@@ -192,12 +200,11 @@ form.addEventListener("submit", (e) => {
 
     const pokemon = search.value;
     if (pokemon) {
-        getPokemon(pokemon.toLowerCase());
+        generateProfile(pokemon.toLowerCase());
         search.value = '';
     }
 
 });
-
 
 //JqueryUI Autocomplete - Search on select Utility
 $(function () {
@@ -216,7 +223,7 @@ $(function () {
                 //Search on select
                 const pokemon = ui.item.label;
                 if (pokemon) {
-                    getPokemon(pokemon.toLowerCase());
+                    generateProfile(pokemon.toLowerCase());
                 }
                 $('#search').blur();
             }
@@ -234,12 +241,8 @@ $(function () {
     }).fail(function () {
         console.log("Error fetching Pokemon en-names");
     });
-
-    //Pagination bind
-    $('#pagination span').click(function(){
-        console.log($(this).val())
-    });
 });
+
 
 
 

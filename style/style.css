@@ -221,8 +221,8 @@ input:focus {
         visibility: visible;
     }
 
-    .physicalDesc div{
-        padding-bottom: 0.5rem;
+    .physicalDesc div:nth-child(2){
+        padding-top: 0.5rem;
     }
 }
 
@@ -292,6 +292,20 @@ input:focus {
     }
 }
 
+/* Flavor-text */
+#flavor-text{
+    grid-column: col-start 1/ span -1;
+    grid-row: 8;
+}
+
+@media only screen and (min-width: 1024px) {
+    #flavor-text{
+        grid-column: col-start 1 / span 12;
+        grid-row: 7;
+        padding-top: 5em;
+    }
+}
+
 /* Pagination */
 #pagination{
     grid-column: col-start 1 / span -1;
@@ -309,10 +323,12 @@ input:focus {
 @media only screen and (min-width: 1024px) {
     #pagination{
         grid-column: col-start 1 / span 12;
-        grid-row: 7;
-        padding-top: 5em;
+        grid-row: 8;
+        padding-top: 3em;
     }
 }
+
+
 
 
 

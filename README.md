@@ -41,9 +41,9 @@
   - [ ] Styling (arrows)
 - [ ] User enhancement
   - [x] Galar Region Japanese Names
-  - [ ] Api Fetch for pokemon-species description
-  - [ ] Look into how to layout more information
-  - [ ] Redo retrieving pokemon details to account for different forms
+  - [x] Api Fetch for pokemon-species description
+  - [x] Look into how to layout more information
+  - [x] Redo retrieving pokemon details to account for different forms
   - [ ] Potential background colour improvement - use pokemon colour for background
   - [ ] Hover over Type picture displays type name
   - [ ] Berries/ Items
@@ -90,7 +90,6 @@ Disclaimer: I don't own any of the rights to any of the Pokemon assests. Rights 
 - Thanks to Dean Harrison for the Behance design inspiration! [Link](https://dribbble.com/shots/2859891--025-Pikachu/attachments/2859891?mode=media)
 - Thanks to Alessandro Pezze for PokeAPI. [Link](https://github.com/PokeAPI/pokeapi/)
 - Also big thanks to Alessandro Pezze for the Browser-side js wrapper used for auto image caching. [Link](https://github.com/PokeAPI/pokeapi-js-wrapper)
-- Thanks to Sinderorhus for the Japanese Pokemon Names JSON. [Link](https://github.com/sindresorhus/pokemon)
 - Credits to Lugia Sea for the Pokemon Type Icons. [Link](https://www.deviantart.com/lugia-sea/art/Pokemon-Type-Icons-Vector-869706864)
 - Credits to 'those-icons' at Flaticon.com for the favicon. [Link](https://www.flaticon.com/authors/those-icons)
 - Credits to Bulbapedia for the 'Pokedex' Logo. [Link](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9dex)
