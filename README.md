@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Simple web page using vanilla Javascript to generate pokemon profiles; showcasing PokeAPI.
+<p align="center"> Simple web page using Javascript (and a little Jquery) to generate pokemon profiles; showcasing PokeAPI.
     <br> 
 </p>
 
