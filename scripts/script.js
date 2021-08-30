@@ -61,7 +61,6 @@ const generateProfile = async (pokemonName) => {
     await getSpeciesData(pokemonName, pokemonObj);
     await getGeneralData(pokemonName, pokemonObj);
     showPokemon(pokemonObj);
-    console.log(pokemonObj)
 }
 
 const getSpeciesData = async (pokemon, model) => {

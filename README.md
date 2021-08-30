@@ -36,7 +36,7 @@
 - [x] Search functionality
 - [ ] Pagination 
   - [x] Functionality
-  - [ ] Optimization (slow atm due to loops)
+  - [ ] Optimization (slow atm due to awaits)
   - [ ] Go by Id rather than name
   - [ ] Styling (arrows)
 - [ ] User enhancement
