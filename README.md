@@ -33,25 +33,13 @@
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
 ## 💻 Changelog - Planned Features
-- [x] Search functionality
 - [ ] Pagination 
-  - [x] Functionality
-  - [ ] Optimization (slow atm due to awaits)
-  - [ ] Go by Id rather than name
-  - [ ] Styling (arrows)
 - [ ] User enhancement
-  - [x] Galar Region Japanese Names
-  - [x] Api Fetch for pokemon-species description
-  - [x] Look into how to layout more information
-  - [x] Redo retrieving pokemon details to account for different forms
-  - [ ] Potential background colour improvement - use pokemon colour for background
-  - [ ] Hover over Type picture displays type name
-  - [ ] Berries/ Items
   - [ ] Animations
   - [ ] SFX
-  - [ ] Img load times
 - [ ] Code enhancement
   - [ ] Integrate Web Components
+  - [ ] Work on seamless load-times
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
