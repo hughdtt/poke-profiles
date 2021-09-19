@@ -2,9 +2,10 @@
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const loader = document.getElementById("loader");
 
 //Init the PokeAPI wrapper
-const P = new Pokedex.Pokedex()
+const P = new Pokedex.Pokedex();
 
 //Cheeky one-liner
 const formatId = (id) => {
@@ -57,10 +58,13 @@ const generateProfile = async (pokemonName) => {
         art_url: '',
         interval_id: [],
     };
-
+    main.style.display = "none";
+    loader.style.display = "grid";
     await getSpeciesData(pokemonName, pokemonObj);
     await getGeneralData(pokemonName, pokemonObj);
-    showPokemon(pokemonObj);
+    await showPokemon(pokemonObj);
+    main.style.display = "grid";
+    loader.style.display = "none";
 }
 
 const getSpeciesData = async (pokemon, model) => {
@@ -208,7 +212,7 @@ form.addEventListener("submit", (e) => {
 //JqueryUI Autocomplete - Search on select Utility
 $(function () {
     //try to grab english names
-    $.getJSON("/poke-profiles/scripts/data-en.json", function (data) {
+    $.getJSON("/scripts/data-en.json", function (data) {
         let prompt = "";
         $("#search").val(prompt).focus(function() { $(this).val(''); }).autocomplete({
             source: data,

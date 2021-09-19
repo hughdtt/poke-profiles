@@ -33,7 +33,7 @@
 - [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
 ## 💻 Changelog - Planned Features
-- [ ] Loading animation while await finishes
+- [x] Loading animation while await finishes
 - [ ] Pagination 
 - [ ] User enhancement
   - [ ] Animations
