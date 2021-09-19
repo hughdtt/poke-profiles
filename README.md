@@ -34,13 +34,14 @@
 
 ## 💻 Changelog - Planned Features
 - [x] Loading animation while await finishes
-- [ ] Pagination 
+- [ ] SEO
 - [ ] User enhancement
   - [ ] Animations
   - [ ] SFX
 - [ ] Code enhancement
   - [ ] Integrate Web Components
   - [ ] Work on seamless load-times
+  - [ ] Pagination
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
