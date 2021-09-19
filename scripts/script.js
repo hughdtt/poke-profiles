@@ -212,7 +212,7 @@ form.addEventListener("submit", (e) => {
 //JqueryUI Autocomplete - Search on select Utility
 $(function () {
     //try to grab english names
-    $.getJSON("/data-en.json", function (data) {
+    $.getJSON("/poke-profiles/scripts/data-en.json", function (data) {
         let prompt = "";
         $("#search").val(prompt).focus(function() { $(this).val(''); }).autocomplete({
             source: data,
