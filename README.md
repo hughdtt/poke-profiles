@@ -51,7 +51,7 @@ You can play with it here: https://hughdtt.github.io/poke-profiles/
 These instructions will get you a copy of the project up and running on your local machine for development purposes. 
 
 ### Prerequisites
-Built with HTML/CSS/Javascript meaning if you can run it as is without installing any additional modules! 
+Built with HTML/CSS/Javascript meaning you can run it as-is without installing any additional modules! 
 
 ### Installing
 
@@ -73,7 +73,7 @@ That's it!
 If you have a live server extension installed, you could easily just boot up the index.html to see changes without need to reload the page. 
 
 ## 🎈 Usage <a name="usage"></a>
-Disclaimer: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
+**Disclaimer**: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Thanks to Dean Harrison for the Behance design inspiration! [Link](https://dribbble.com/shots/2859891--025-Pikachu/attachments/2859891?mode=media)
