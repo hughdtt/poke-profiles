@@ -33,7 +33,6 @@
 
 ## 💻 Changelog - Planned Features
 - [x] Loading animation while await finishes
-- [ ] SEO
 - [ ] User enhancement
   - [ ] Animations
   - [ ] SFX
