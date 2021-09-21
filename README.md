@@ -23,7 +23,6 @@
 ![alt text](https://github.com/hughdtt/poke-profiles/blob/main/img/pika-photo.PNG?raw=true)
 
 ## 📝 Table of Contents
-- [📝 Table of Contents](#-table-of-contents)
 - [💻 Changelog - Planned Features](#-changelog---planned-features)
 - [🧐 Live deployment <a name = "live_deployment"></a>](#-live-deployment-)
 - [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
@@ -34,7 +33,6 @@
 
 ## 💻 Changelog - Planned Features
 - [x] Loading animation while await finishes
-- [ ] SEO
 - [ ] User enhancement
   - [ ] Animations
   - [ ] SFX
@@ -46,13 +44,13 @@
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
 
-Disclaimer: App is best experienced on a desktop, but mobile versions are fine too. 
+**Disclaimer**: App is best experienced on a desktop, but mobile version is ine too. 
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+These instructions will get you a copy of the project up and running on your local machine for development purposes. 
 
 ### Prerequisites
-Considering that's it's just plain old HTML/CSS/Javascript, you'll just need to have a modern browser installed! Of course, it'd be nice if you had VSCode and the Live-Reloader Extension installed aswell.
+Built with HTML/CSS/Javascript meaning you can run it as-is without installing any additional modules! 
 
 ### Installing
 
@@ -71,10 +69,10 @@ git clone https://github.com/hughdtt/poke-profiles.git
 
 That's it!
 
-You should be able to boot up the index.html and have a little local demo to play with.
+If you have a live server extension installed, you could easily just boot up the index.html to see changes without need to reload the page. 
 
 ## 🎈 Usage <a name="usage"></a>
-Disclaimer: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
+**Disclaimer**: I don't own any of the rights to any of the Pokemon assests. Rights go to their respective owners. This project isn't intended for profit, simply a passion project for fun and experimentation. 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Thanks to Dean Harrison for the Behance design inspiration! [Link](https://dribbble.com/shots/2859891--025-Pikachu/attachments/2859891?mode=media)
