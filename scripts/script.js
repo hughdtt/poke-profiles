@@ -58,11 +58,13 @@ const generateProfile = async (pokemonName) => {
         art_url: '',
         interval_id: [],
     };
+    form.style.display= "none";
     main.style.display = "none";
     loader.style.display = "grid";
     await getSpeciesData(pokemonName, pokemonObj);
     await getGeneralData(pokemonName, pokemonObj);
-    await showPokemon(pokemonObj);
+    showPokemon(pokemonObj);
+    form.style.display= "block";
     main.style.display = "grid";
     loader.style.display = "none";
 }
@@ -213,9 +215,17 @@ form.addEventListener("submit", (e) => {
 $(function () {
     //try to grab english names
     $.getJSON("/poke-profiles/scripts/data-en.json", function (data) {
+        data.sort();
         let prompt = "";
         $("#search").val(prompt).focus(function() { $(this).val(''); }).autocomplete({
-            source: data,
+            source: function( request, response ) {
+                var matches = $.map( data, function(data) {
+                  if ( data.toUpperCase().indexOf(request.term.toUpperCase()) === 0 ) {
+                    return data;
+                  }
+                });
+                response(matches);
+            },
             response: function (event, ui) {
                 if (!ui.content.length) {
                     var noResult = { label: "No results found", value: "No results found" };
