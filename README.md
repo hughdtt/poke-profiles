@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Just a neat little static page with some javascript functionality. I stumbled upon the PokeAPI and thought I could do something with it.
+<p align="center"> Vanilla Javascript "SPA" Pokedex. 
     <br> 
 </p>
 
@@ -24,6 +24,9 @@
 
 ## 🧐 Live deployment <a name = "live_deployment"></a>
 You can play with it here: https://hughdtt.github.io/poke-profiles/
+
+## Purpose
+Experimental. Just wanted to try out the PokeAPI and the vanilla javascript wrapper they built. It's neat. Didn't use any client-side frameworks so searching/updating the page isn't super seemless. It's using template literals to try simulate state updates that you get from more modern frameworks. Works okay I guess, not very elegant and doesn't scale super well. But it does the trick. Plus it was nice to implement the css for this design. Works for mobile too.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Thanks to Dean Harrison for the Behance design inspiration! [Link](https://dribbble.com/shots/2859891--025-Pikachu/attachments/2859891?mode=media)
