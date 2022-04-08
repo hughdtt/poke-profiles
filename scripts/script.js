@@ -34,7 +34,7 @@ const colours = {
     Fairy: '#D685AD',
 };
 
-const generateProfile = async (pokemonName) => {
+const generateProfile = (pokemonName) => {
     //Init pokemonObj so we can save data we need
     let pokemonObj = {
         _id: 0,
@@ -61,75 +61,79 @@ const generateProfile = async (pokemonName) => {
     form.style.display= "none";
     main.style.display = "none";
     loader.style.display = "grid";
-    await getSpeciesData(pokemonName, pokemonObj);
-    await getGeneralData(pokemonName, pokemonObj);
-    showPokemon(pokemonObj);
+    Promise.all([P.getPokemonSpeciesByName(pokemonName), P.getPokemonByName(pokemonName)]).then( responses => {
+        getSpeciesData(responses[0], pokemonObj);
+        getGeneralData(responses[1], pokemonObj);
+        showPokemon(pokemonObj);
+    })
+    .catch( error => {
+        console.error(`Failed to fetch: ${error}`)
+    });
+    
     form.style.display= "block";
     main.style.display = "grid";
     loader.style.display = "none";
 }
 
-const getSpeciesData = async (pokemon, model) => {
-    //Call API to grab pokemon details
-    await P.getPokemonSpeciesByName(pokemon).then(function (resp) {
-        model._id = resp.id;
-        for (let i in resp.pokedex_numbers){
-            if (resp.pokedex_numbers[i].pokedex.name == 'national'){
-                model.national_id = resp.pokedex_numbers[i].entry_number;
-            }
+
+
+
+const getSpeciesData = (resp, model) => {
+    model.forms = resp.varieties;
+    model._id = resp.id;
+    for (let i in resp.pokedex_numbers){
+        if (resp.pokedex_numbers[i].pokedex.name == 'national'){
+            model.national_id = resp.pokedex_numbers[i].entry_number;
         }
-        for (let i in resp.names){
-            if (resp.names[i].language.name == 'en'){
-                model.names.en = resp.names[i].name;
-            }
-            if (resp.names[i].language.name == 'ja-Hrkt'){
-                model.names.jp = resp.names[i].name;
-            }
-        };
-        for (let i in resp.flavor_text_entries){
-            if(resp.flavor_text_entries[i].language.name == 'en' && resp.flavor_text_entries[i].version.name == 'firered'){
-                model.description.flavor_text = resp.flavor_text_entries[i].flavor_text;   
-            }
+    }
+    for (let i in resp.names){
+        if (resp.names[i].language.name == 'en'){
+            model.names.en = resp.names[i].name;
         }
-        model.description.color = resp.color.name;
-        model.forms = resp.varieties
-    });
+        if (resp.names[i].language.name == 'ja-Hrkt'){
+            model.names.jp = resp.names[i].name;
+        }
+    };
+    for (let i in resp.flavor_text_entries){
+        if(resp.flavor_text_entries[i].language.name == 'en' && resp.flavor_text_entries[i].version.name == 'firered'){
+            model.description.flavor_text = resp.flavor_text_entries[i].flavor_text;   
+        }
+    }
+    model.description.color = resp.color.name;
 }
 
-const getGeneralData = async (pokemon, model) => {
-    //Call API to grab pokemon details
-    await P.getPokemonByName(model.forms[0].pokemon.name).then(function (resp) {
-        model.art_url = resp.sprites.other["official-artwork"].front_default;
-        model.description.height = resp.height;
-        model.description.weight = resp.weight;
-        for (let i in resp.types) {
-            let string = resp.types[i].type.name
-            model.description.types.push(string.charAt(0).toUpperCase() + string.slice(1))
-        }
-        for (let i in resp.stats) {
-            let statObj = {};
-            statObj[`${resp.stats[i].stat.name}`] = `${resp.stats[i].base_stat}`
-            model.description.stats.push(statObj)
-        }
-        for (let i in resp.abilities) {
-            model.description.moves.push(resp.abilities[i].ability.name)
-        }
-        //Hardcoding this because api is missing doesn't have an easy to do it
-        if (resp.id <= 151) { model.description.region = 'Kanto Region' }
-        if (resp.id > 151 && resp.id <= 251) { model.description.region = 'Johto Region' }
-        if (resp.id > 251 && resp.id <= 386) { model.description.region = 'Hoenn Region' }
-        if (resp.id > 386 && resp.id <= 493) { model.description.region = 'Sinnoh Region' }
-        if (resp.id > 493 && resp.id <= 649) { model.description.region = 'Unova Region' }
-        if (resp.id > 649 && resp.id <= 721) { model.description.region = 'Kalos Region' }
-        if (resp.id > 721 && resp.id <= 809) { model.description.region = 'Alola Region' }
-        if (resp.id > 809) { model.description.region = 'Galar Region' }
+const getGeneralData = (resp, model) => {
+    for (let i in resp.stats) {
+        let statObj = {};
+        statObj[`${resp.stats[i].stat.name}`] = `${resp.stats[i].base_stat}`
+        model.description.stats.push(statObj)
+    }
+    model.art_url = resp.sprites.other["official-artwork"].front_default;
+    model.description.height = resp.height;
+    model.description.weight = resp.weight;
+    for (let i in resp.types) {
+        let string = resp.types[i].type.name
+        model.description.types.push(string.charAt(0).toUpperCase() + string.slice(1))
+    }
 
-        if (resp.id > 5) {
-            for (let i = 0; i < 10; i++){
-                model.interval_id.push(resp.id - 4 + i)
-            }
+    for (let i in resp.abilities) {
+        model.description.moves.push(resp.abilities[i].ability.name)
+    }
+    //Hardcoding this because api is missing doesn't have an easy to do it
+    if (resp.id <= 151) { model.description.region = 'Kanto Region' }
+    if (resp.id > 151 && resp.id <= 251) { model.description.region = 'Johto Region' }
+    if (resp.id > 251 && resp.id <= 386) { model.description.region = 'Hoenn Region' }
+    if (resp.id > 386 && resp.id <= 493) { model.description.region = 'Sinnoh Region' }
+    if (resp.id > 493 && resp.id <= 649) { model.description.region = 'Unova Region' }
+    if (resp.id > 649 && resp.id <= 721) { model.description.region = 'Kalos Region' }
+    if (resp.id > 721 && resp.id <= 809) { model.description.region = 'Alola Region' }
+    if (resp.id > 809) { model.description.region = 'Galar Region' }
+
+    if (resp.id > 5) {
+        for (let i = 0; i < 10; i++){
+            model.interval_id.push(resp.id - 4 + i)
         }
-    });
+    }
 }
 
 const showPokemon = (model) => {
